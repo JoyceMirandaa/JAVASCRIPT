@@ -7,86 +7,95 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <h1>To-List Semanal</h1>
-
     <div class="container">
-        <div class="input">
+        <h1>To-List Semanal</h1>
+        <div class="input-container">
             <input type="text" id="adicionar" placeholder="Add Tarefa">
             <input type="text" id="adicionarSemana" placeholder="Dia da Semana">
-        </div>
-        <div class="button">
             <button onclick="AdicioanarTarefa()">Adicionar</button>
+        </div>      
+    </div>
+
+    <div class="container-head">
+        <div class="semanal">
+            <h2>SEGUNDA</h2>
+            <p id="segunda"></p>
         </div>
 
-    </div>
+        <div class="semanal">
+            <h2>TERÇA</h2>
+            <p id="terca"></p>
+        </div>
 
-    <div class="segunda">
-        <h2>SEGUNDA</h2>
-        <p id="segunda"></p>
-    </div>
+        <div class="semanal">
+            <h2>QUARTA</h2>
+            <p id="quarta"></p>
+        </div>
 
-    <div class="terca">
-        <h2>TERÇA</h2>
-        <p id="terca"></p>
-    </div>
+        <div class="semanal">
+            <h2>QUINTA</h2>
+            <p id="quinta"></p>
+        </div>
 
-    <div class="quarta">
-        <h2>QUARTA</h2>
-        <p id="quarta"></p>
-    </div>
+        <div class="semanal">
+            <h2>SEXTA</h2>
+            <p id="sexta"></p>
+        </div>
 
-    <div class="quinta">
-        <h2>QUINTA</h2>
-        <p id="quinta"></p>
-    </div>
+        <div class="semanal">
+            <h2>SABADO</h2>
+            <p id="sabado"></p>
+        </div>
 
-    <div class="sexta">
-        <h2>SEXTA</h2>
-        <p id="sexta"></p>
-    </div>
-
-    <div class="sabado">
-        <h2>SABADO</h2>
-        <p id="sabado"></p>
-    </div>
-
-    <div class="domingo">
-        <h2>DOMINGO</h2>
-        <p id="domingo"></p>
+        <div class="semanal">
+            <h2>DOMINGO</h2> 
+            <label id="domingo" for="meucheck"></label>
+        </div>
     </div>
 
     <script>
-        function AdicioanarTarefa(){
-            let task = [];
-            const semana = document.getElementById("adicionarSemana").value;
-            const tarefa = document.getElementById("adicionar").value;
-            task.push(tarefa);
 
-            if (semana == "Domingo".toLowerCase()){
-                task.push(tarefa);
-                document.getElementById("domingo").innerText = tarefa
-            } else if(semana == "Sabado".toLowerCase()){
-                task.push(tarefa);
-                document.getElementById("sabado").innerText = tarefa
-            } else if(semana == "Segunda".toLowerCase()){
-                task.push(tarefa);
-                document.getElementById("segunda").innerText = tarefa
-            } else if(semana == "Terça".toLowerCase()){
-                task.push(tarefa);
-                document.getElementById("terca").innerText = tarefa
-            } else if(semana == "Quarta".toLowerCase()){
-                task.push(tarefa);
-                document.getElementById("quarta").innerText = tarefa
-            } else if(semana == "Quinta".toLowerCase()){
-                task.push(tarefa);
-                document.getElementById("quinta").innerText = tarefa
-            } else if(semana == "Sexta".toLowerCase()){
-                task.push(tarefa);
-                document.getElementById("sexta".toLowerCase()).innerText = tarefa
-            }
+        let diasemana = {
+            domingo: [],
+            segunda: [],
+            terca: [],
+            quarta: [],
+            quinta: [],
+            sexta: [],
+            sabado: []
+        };
 
-        }
-    </script>
     
+        function AdicioanarTarefa(){
+            const semana = document.getElementById("adicionarSemana").value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+            const tarefa = document.getElementById("adicionar").value;
+
+            const novaTarefa = tarefa + '\n'; 
+            const checkbox = document.createElement('label');
+            checkbox.type = 'checkbox';
+            checkbox.id = 'meucheck' + new Date().getTime(); 
+            
+            if (semana in diasemana) {
+                diasemana[semana].push(tarefa);
+                if(semana == "domingo"){
+                    document.getElementById("domingo").innerText += novaTarefa;
+                    novaTarefa.appendChild(checkbox);
+                } else if(semana == "sabado"){
+                    document.getElementById("sabado").innerText += novaTarefa;
+                } else if(semana == "segunda"){
+                    document.getElementById("segunda").innerText += novaTarefa;
+                } else if(semana == "terca"){
+                    document.getElementById("terca").innerText += novaTarefa;
+                } else if(semana == "quarta"){
+                    document.getElementById("quarta").innerText += novaTarefa;
+                } else if(semana == "quinta"){
+                    document.getElementById("quinta").innerText += novaTarefa;
+                } else if(semana == "sexta"){
+                    document.getElementById("sexta").innerText += novaTarefa;
+                }
+            }
+        }
+
+    </script>
 </body>
 </html>

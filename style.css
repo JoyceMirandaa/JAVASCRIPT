@@ -3,17 +3,67 @@ body{
     background: #a0c1ee;
 }
 
-h1{
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.container{
+    background-color: rgb(255, 254, 248);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 100px rgb(113, 158, 255);
+    width: 40%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.container{
+h1{
+    text-align: center;
+}
+
+.input-container{
     display: flex;
     justify-content: center;
 }
 
-.button{
-    position: relative;
-    bottom: 10px;
+input{
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #5bb5ff; 
+    border-radius: 4px; 
+}
+
+button{
+    padding: 10px;
+    border: none;
+    background: #5bb5ff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover{
+    background: #5bb5ff;
+}
+
+.container-head{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 50px;
+}
+
+.semanal{
+    text-align: center;
+    background-color: rgb(255, 254, 248);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 100px rgb(113, 158, 255);
+    flex: 1;
+    bottom: -110px;
+}
+
+.overline {
+    text-decoration: overline;
+}
+
+.semanal[type="checkbox"]{
+    color: black;
 }
