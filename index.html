@@ -70,16 +70,29 @@
             const semana = document.getElementById("adicionarSemana").value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
             const tarefa = document.getElementById("adicionar").value;
 
-            const novaTarefa = tarefa + '\n'; 
-            const checkbox = document.createElement('label');
+            const taskList = document.getElementById(semana);
+
+            const listItem = document.createElement('li');
+
+            const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
-            checkbox.id = 'meucheck' + new Date().getTime(); 
+            checkbox.id = 'checkbox_' + Date.now();
+
+            const label = document.createElement('label');
+            label.htmlFor = checkbox.id;
+            label.appendChild(document.createTextNode(tarefa));
+
+            listItem.appendChild(checkbox);
+            listItem.appendChild(label);
             
+            listItem.insertBefore(document.createTextNode(' '), label);
+
+            taskList.appendChild(listItem);
+                    
             if (semana in diasemana) {
                 diasemana[semana].push(tarefa);
                 if(semana == "domingo"){
                     document.getElementById("domingo").innerText += novaTarefa;
-                    novaTarefa.appendChild(checkbox);
                 } else if(semana == "sabado"){
                     document.getElementById("sabado").innerText += novaTarefa;
                 } else if(semana == "segunda"){

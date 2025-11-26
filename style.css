@@ -7,7 +7,7 @@ body{
     background-color: rgb(255, 254, 248);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 100px rgb(113, 158, 255);
+    box-shadow: 0 0 90px rgb(92, 34, 250);
     width: 40%;
     height: 150px;
     margin-left: auto;
@@ -55,7 +55,7 @@ button:hover{
     background-color: rgb(255, 254, 248);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 100px rgb(113, 158, 255);
+    box-shadow: 0 0 90px rgb(92, 34, 250);
     flex: 1;
     bottom: -110px;
 }
